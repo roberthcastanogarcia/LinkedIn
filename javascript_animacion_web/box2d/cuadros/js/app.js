@@ -57,19 +57,6 @@ function createBall(world, x, y) {
 
 }
 
-function createJoint(){
-	var myBall = createBall(world, 600, 150);
-
-	var jointDef = new b2RevoluteJointDef();
-	jointDef.anchorPoint.Set(400, 200);
-
-	jointDef.body1 = world.GetGroundBody();
-	jointDef.body2 = myBall;
-
-	return world.CreateJoint(jointDef);
-
-}
-
 function createBox(world, x, y, width, height) {
 	var boxSd = new b2BoxDef();
 	boxSd.density = 1.0;
@@ -80,7 +67,6 @@ function createBox(world, x, y, width, height) {
 	var boxBd = new b2BodyDef();
 	boxBd.AddShape(boxSd);
 	boxBd.position.Set(x,y);
-
 	return world.CreateBody(boxBd);
 }
 
@@ -90,8 +76,6 @@ function generarMundo() {
 	createBall(world, 300, 120);
 	createBox(world, 400, 50, 10, 20);
 	createBox(world, 600, 50, 50, 70);
-
-	createJoint();
 }
 
 
