@@ -8,10 +8,17 @@ window.onload = function() {
 	btnReiniciar = document.getElementById("btnReiniciar");
 	logo = document.getElementById("logo");
 	btnAnimar.onclick = animar;
+
 }
 
 function animar() {
 
-	TweenLite.to(logo, 2, {left: 200});
+	animacion = TweenLite.from(logo, 2, {
+		left: 600,
+		backgroundColor: "black"
+	});
 
+	btnReiniciar.onclick = function() {
+		animacion.restart();
+	}
 }
