@@ -42,7 +42,23 @@ function step(cnt) {
 	setTimeout('step(' + (cnt || 0) + ')', 10);
 }
 
+function createBall(world, x, y) {
+	var ballSd = new b2CircleDef();
+	ballSd.density = 0.5;
+	ballSd.radius = 20;
+	ballSd.restitution = 0.5;
+	ballSd.friction =1;
+
+	var ballBd = new b2BodyDef();
+	ballBd.AddShape(ballSd);
+	ballBd.position.Set(x, y);
+
+	return world.CreateBody(ballBd);
+
+}
 
 function generarMundo() {
 	console.log("El mundo ha sido creado");
+	createBall(world, 400, 50);
 }
+
