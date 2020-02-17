@@ -2,13 +2,11 @@ var animacion;
 var logo;
 var btnReiniciar;
 var btnAnimar;
+var btnAnimarImg;
 
 window.onload = function() {
 	btnAnimar = document.getElementById("btnAnimar");
 	btnReiniciar = document.getElementById("btnReiniciar");
-	btnPausar = document.getElementById("btnPausar");
-	btnReversa = document.getElementById("btnReversa");
-	btnPlay = document.getElementById("btnPlay");
 	btnAnimarImg = document.getElementById("btnAnimarImg");
 	logo = document.getElementById("logo");
 	btnAnimar.onclick = animar;
@@ -18,14 +16,13 @@ window.onload = function() {
 
 function animar() {
 
-	animacion = TweenLite.to(logo, 3, {
+	animacion = TweenMax.to(logo, 3, {
 		left: 120,
 		backgroundColor: "black",
 		borderRadius: 50,
-		delay: 0,
-		ease: Elastic.easeOut,
-		onComplete: animacionTerminada,
-		onCompleteParams: ["Animación terminada","Este es otro parámetro"]
+		repeat: 2,
+		repeatDelay: 2,
+		yoyo: true
 	});
 
 	btnReiniciar.onclick = function() {
@@ -41,5 +38,6 @@ function animarImg() {
 	var img1 = document.getElementById("img1");
 	var img2 = document.getElementById("img2");
 	var img3 = document.getElementById("img3");
-	TweenLite.to([img1, img2, img3], 1, {scale: 0.2})
+	
+	TweenMax.staggerTo([img1, img2, img3], 2, {left:400}, 2);
 }
